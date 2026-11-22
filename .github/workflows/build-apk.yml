@@ -4,6 +4,9 @@ on:
   push:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,8 +24,21 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew --no-daemon assembleDebug
+          cp app/build/outputs/apk/debug/app-debug.apk GNTerminal.apk
 
       - uses: actions/upload-artifact@v4
         with:
           name: GNTerminal-apk
-          path: app/build/outputs/apk/debug/*.apk
+          path: GNTerminal.apk
+
+      # Publish a GitHub Release so the APK can be downloaded and installed directly on a phone.
+      - name: Publish release
+        if: github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="build-${{ github.run_number }}"
+          gh release create "$TAG" GNTerminal.apk \
+            --title "GN Terminal build ${{ github.run_number }}" \
+            --notes "Install: open GNTerminal.apk on your Android phone and allow installs from your browser. Commit ${{ github.sha }}." \
+            --latest
