@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GN Terminal</string>
+    <string name="widget_title">GN TERMINAL</string>
+    <string name="widget_refresh">⟳</string>
+    <string name="widget_description">Nifty, India VIX, option-chain PCR and max pain, gold spot and MCX/landed price, USD/INR and the top market-moving headline.</string>
+</resources>

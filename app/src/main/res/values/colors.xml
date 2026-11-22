@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="term_black">#FF000000</color>
+    <color name="term_amber">#FFFFA028</color>
+    <color name="term_text">#FFE6E6E6</color>
+    <color name="term_dim">#FF8C8C8C</color>
+    <color name="ic_bg">#FF0A0A0A</color>
+</resources>
